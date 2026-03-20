@@ -5,6 +5,12 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
+    <color name="grey_task_bar">#263238</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="buttonoff">#AAFFFF</color>
+    <color name="buttonon">#0000BB</color>
+    <color name="stopbuttontext">#0000AA</color>
+    <color name="mathis">#AAFFFF</color>
+    <color name="actionBar">#FF424242</color>
 </resources>

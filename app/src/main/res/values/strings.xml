@@ -1,3 +1,38 @@
 <resources>
-    <string name="app_name">AeolusAndroid</string>
+    <string name="app_name">Midi_synth</string>
+    <string name="midi_input_title">Midi Input</string>
+    <string name="no_messages_received">No messages received yet</string>
+    <string name="input_message">Input message:</string>
+    <string name="software_port">Software port</string>
+    <string name="use_software_port">Use</string>
+    <string name="hardware_ports">Hardware ports</string>
+    <string name="audio_output">Audio Output</string>
+    <string name="soundfont_label">Choose soundfont for FluidSynth</string>
+    <string name="no_software_input_available">No software input available</string>
+    <string name="test_fluidsynth">Test Fluidsynth</string>
+    <string name="test_aeolus_synth">Test Aeolus Synth</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="go_to_piano">Go to piano</string>
+    <string name="audio_midi_settings">Audio/Midi Settings</string>
+    <string name="tuning_scale">Tuning scale</string>
+    <string name="calculating_please_wait">Calculating, please wait</string>
+    <string name="division_on">division on</string>
+    <string name="division_off">division off</string>
+    <string name="all_buttons_turn_on">all buttons turn on</string>
+    <string name="go_to_audio_midi_setup">Go to audio/midi setup</string>
+    <string name="all_buttons_turn_off">all buttons turn off</string>
+    <string name="no_name">No name</string>
+    <string name="_1">1</string>
+    <string name="midi_input_mapping">Midi input mapping</string>
+    <string name="division_label">Division label</string>
+    <string name="go_to_aeolus">Go to Aeolus</string>
+    <string name="panic_off">panic off</string>
+    <string name="panic_on">panic on</string>
+    <string name="panic">panic</string>
+    <string name="recall_stops">Recall stops</string>
 </resources>

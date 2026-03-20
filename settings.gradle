@@ -19,5 +19,8 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "AeolusAndroid"
+rootProject.name = "Midi_synth"
 include ':app'
+include ':aeolusNative'
+include ':inputMidi'
+include ':midiBase'

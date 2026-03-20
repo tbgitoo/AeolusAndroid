@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AudioSettingsActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginTop="0dp"
+
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginTop="30dp"
+
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/customborder"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/titleMidiInput"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/midi_input_title"
+                android:textSize="35sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/receiveMessageLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/input_message" />
+
+                <TextView
+                    android:id="@+id/receiveMessageTx"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/no_messages_received" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/software"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="30dp"
+
+                        android:textSize="24sp"
+                        android:text="@string/software_port" />
+
+                    <Switch
+                        android:id="@+id/switch_software_port"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:text="@string/use_software_port"
+                        android:visibility="visible"/>
+
+                    <TextView
+                        android:id="@+id/no_software_input"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="30dp"
+
+                        android:textSize="18sp"
+                        android:text="@string/no_software_input_available" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginStart="30dp">
+
+                    <TextView
+                        android:id="@+id/hardware"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/hardware_ports"
+                        android:textSize="24sp"/>
+
+                    <Spinner
+                        android:id="@+id/outputDevicesSpinner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp" />
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+<!-- Second box, with audio output
+===================================================================================
+-->
+
+
+
+
+        <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/customborder"
+
+        >
+
+        <TextView
+            android:id="@+id/titleAudioOutput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/audio_output"
+            android:textSize="35sp"
+            />
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:orientation="horizontal"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="20dp"
+
+
+                >
+                <TextView
+                    android:id="@+id/tuning"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+
+                    android:textSize="24sp"
+                    android:text="@string/tuning_scale" />
+
+            <Spinner
+                android:id="@+id/spinner_tuning"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:background="@android:drawable/btn_dropdown"
+                android:spinnerMode="dropdown"/>
+
+                <TextView
+                    android:id="@+id/status_tuning"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:visibility="invisible"
+                    android:textSize="18sp"
+                    android:text="@string/calculating_please_wait" />
+
+            </LinearLayout>
+
+
+
+            <Button
+                android:id="@+id/SynthTest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="testAeolusSynth"
+                android:text="@string/test_aeolus_synth" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </LinearLayout>
+
+    </LinearLayout>
+
+        <!-- End Audio output box -->
+
+
+    <LinearLayout
+        android:layout_width="800dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@drawable/customborder"
+        android:orientation="vertical"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginTop="30dp"
+        android:id="@+id/midiChannelsBaseLayout">
+
+        <TextView
+            android:id="@+id/titleMidiMap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/midi_input_mapping"
+            android:textSize="35sp" />
+    </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/alertpanicbuttonoff"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:backgroundTint="@color/mathis"
+        android:text="@string/panic_off"
+        android:textColor="@color/black"
+        android:width="200dp"/>
+
+    <Button
+        android:id="@+id/alertpanicbuttonon"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:backgroundTint="@color/buttonoff"
+        android:textColor="@color/black"
+        android:text="@string/panic_on" />
+
+    <Button
+        android:id="@+id/toggleAllOnButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/all_buttons_turn_on" />
+
+    <Button
+        android:id="@+id/recallStopsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/recall_stops" />
+
+    <Button
+        android:id="@+id/toggleAllOffButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/all_buttons_turn_off" />
+
+    <ImageView
+        android:id="@+id/gotoSettings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:contentDescription="@string/go_to_audio_midi_setup"
+        android:scaleType="center"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="40dp"
+
+        app:srcCompat="@drawable/audio_midi_navigation" />
+
+    <ImageView
+        android:id="@+id/gotoPiano"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:contentDescription="@string/go_to_piano"
+        android:scaleType="center"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="40dp"
+        app:srcCompat="@drawable/piano_keyboard_icon" />
+
+</LinearLayout>

@@ -4,23 +4,18 @@ plugins {
 
 android {
     namespace 'com.mathis.midiSynth'
-    compileSdk {
-        version = release(36)
-    }
-
-
-// ✅ Add this line after you install NDK r28+ and know the exact version string
-    ndkVersion = "30.0.14904198"
-
+    compileSdk 35
 
     defaultConfig {
         applicationId "com.mathis.midiSynth"
-        minSdk 24
-        targetSdk 36
+        minSdk 33
+        targetSdk 35
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+
     }
 
     buildTypes {
@@ -33,22 +28,26 @@ android {
         sourceCompatibility JavaVersion.VERSION_11
         targetCompatibility JavaVersion.VERSION_11
     }
-    externalNativeBuild {
-        cmake {
-            path file('src/main/cpp/CMakeLists.txt')
-            version '3.22.1'
-        }
-    }
+
     buildFeatures {
         viewBinding true
+        dataBinding true
+        prefab true
     }
 }
 
 dependencies {
+
     implementation libs.appcompat
     implementation libs.material
     implementation libs.constraintlayout
+    implementation libs.navigation.fragment
+    implementation libs.navigation.ui
+    implementation libs.activity
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
+    implementation project(path: ':aeolusNative')
+    implementation project(path: ':inputMidi')
+    implementation project(path: ':midiBase')
 }

@@ -1,0 +1,16 @@
+
+[submodule "aeolusNative"]
+	path = aeolusNative
+	url = https://github.com/tbgitoo/aeolusNative
+	update = rebase
+
+[submodule "midiBase"]
+	path = midiBase
+	url = https://github.com/tbgitoo/midiBase
+	update = rebase
+
+[submodule "inputMidi"]
+	path = inputMidi
+	url = https://github.com/tbgitoo/inputMidi
+	update = rebase
+
