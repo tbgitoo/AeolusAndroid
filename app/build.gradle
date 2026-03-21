@@ -1,11 +1,35 @@
+
 plugins {
     alias(libs.plugins.android.application)
 }
+
+import java.util.Properties
+
+// ---- Optional local signing (no effect if the file is absent) ----
+def keystoreProps = new Properties()
+def keystoreFile  = rootProject.file("keystore.properties")
+if (keystoreFile.exists()) {
+    keystoreProps.load(new FileInputStream(keystoreFile))
+}
+def hasReleaseKeystore = keystoreFile.exists()
+// ------------------------------------------------------------------
 
 android {
     namespace 'com.mathis.midiSynth'
     compileSdk 35
     ndkVersion = "30.0.14904198"
+
+    signingConfigs {
+        // Only define a release signing config if a local keystore is present
+        if (hasReleaseKeystore) {
+            release {
+                storeFile file(keystoreProps['storeFile'])
+                storePassword keystoreProps['storePassword']
+                keyAlias keystoreProps['keyAlias']
+                keyPassword keystoreProps['keyPassword']
+            }
+        }
+    }
 
     defaultConfig {
         applicationId "com.mathis.midiSynth"
@@ -13,18 +37,28 @@ android {
         targetSdk 35
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
-
     }
 
     buildTypes {
+        // Everyone can build this (unsigned unless you set a signingConfig)
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'),
+                    'proguard-rules.pro'
+            // Intentionally no signingConfig here -> no keystore required
         }
+
+        // Maintainer-only build type: create it ONLY if keystore exists
+        if (hasReleaseKeystore) {
+            create("releaseSigned") {
+                initWith getByName("release")
+                signingConfig signingConfigs.release
+            }
+        }
+        // If keystore is absent, we simply don't create "releaseSigned"
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_11
         targetCompatibility JavaVersion.VERSION_11
@@ -38,16 +72,17 @@ android {
 }
 
 dependencies {
-
     implementation libs.appcompat
     implementation libs.material
     implementation libs.constraintlayout
     implementation libs.navigation.fragment
     implementation libs.navigation.ui
     implementation libs.activity
+
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
+
     implementation project(path: ':aeolusNative')
     implementation project(path: ':inputMidi')
     implementation project(path: ':midiBase')
