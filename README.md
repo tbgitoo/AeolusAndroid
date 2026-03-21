@@ -7,6 +7,7 @@ This work is licensed under **GPL v3.0** and is provided **"as is"**, without an
 This is an independent, unofficial Android port of the open‑source **Aeolus** pipe‑organ software. It is **not affiliated with or endorsed by** the original Aeolus project or any other *AEOLUS* trademark holder.
 
 ---
+**Why this project exists** — We started this as a family project to play a real MIDI “pedalier” through an Android tablet with a high‑quality, free pipe‑organ sound. Existing Android apps didn’t meet our needs for external MIDI pedalboard support, low‑latency local audio, and a serious organ engine that we could study and adapt. Aeolus already solved the musical side on desktop/Linux, so this project brings Aeolus to Android with the minimal changes required. It’s a specialized instrument, not a consumer app, intended for people who know what manuals, stops, and pedals are—and who don’t mind installing from a release package rather than an app store.
 
 ## What is this?
 
