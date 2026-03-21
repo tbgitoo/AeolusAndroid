@@ -7,7 +7,7 @@ import java.util.Properties
 
 // ---- Optional local signing (no effect if the file is absent) ----
 def keystoreProps = new Properties()
-def keystoreFile  = rootProject.file("keystore.properties")
+def keystoreFile  = rootProject.file(".keystore.properties")
 if (keystoreFile.exists()) {
     keystoreProps.load(new FileInputStream(keystoreFile))
 }
@@ -40,24 +40,19 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+
     buildTypes {
-        // Everyone can build this (unsigned unless you set a signingConfig)
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'),
-                    'proguard-rules.pro'
-            // Intentionally no signingConfig here -> no keystore required
-        }
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
 
-        // Maintainer-only build type: create it ONLY if keystore exists
-        if (hasReleaseKeystore) {
-            create("releaseSigned") {
-                initWith getByName("release")
+            // Sign only if the local keystore file exists (maintainers)
+            if (hasReleaseKeystore) {
                 signingConfig signingConfigs.release
             }
         }
-        // If keystore is absent, we simply don't create "releaseSigned"
     }
+
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_11
