@@ -1,230 +1,161 @@
-QUICK START 
+# Aeolus Android – Unofficial Port
 
-===========
+## Disclaimer
 
+This work is licensed under **GPL v3.0** and is provided **"as is"**, without any warranty—no guarantee of fitness for a particular purpose and no liability for any damages arising from its use.
 
+This is an independent, unofficial Android port of the open‑source **Aeolus** pipe‑organ software. It is **not affiliated with or endorsed by** the original Aeolus project or any other *AEOLUS* trademark holder.
 
-Install the APK directly on your device
+---
 
-\---------------------------------------
+## What is this?
 
+This Android app brings the **Aeolus pipe‑organ synthesizer** to mobile. It can be driven by:
 
+- ✅ the internal (on‑screen) keyboard
+- ✅ software MIDI sources (virtual keyboard apps)
+- ✅ hardware MIDI sources (externally connected keyboards)
 
-1\) Download the latest release APK (e.g., "AeolusAndroid-v1.0.apk") from the
+All of these drive the Aeolus synthesizer engine directly.
 
-&#x20;  Releases page (https://github.com/tbgitoo/AeolusAndroid/releases/download/v1.0/AeolusAndroid-v1.0.apk)
+---
 
+# Quick Start
 
+## Install the APK directly on your device
 
-2\) On your Android device, open the APK and follow the prompts.
+1. **Download the latest release APK** (for example `AeolusAndroid-v1.0.apk`) from the GitHub Releases page:
+   
+   👉 https://github.com/tbgitoo/AeolusAndroid/releases/download/v1.0/AeolusAndroid-v1.0.apk
 
-&#x20;  • If Android blocks installation from your browser or files app, allow
+2. On your Android device, **open the APK and follow the prompts**.
 
-&#x20;    "Install unknown apps" for that app (you will get a prompt; you can
+   - If Android blocks installation from your browser or file manager, allow **"Install unknown apps"** for that app when prompted.
+   - Android may ask to scan the app for threats — you are encouraged to do so; the app should pass.
 
-&#x20;    toggle it off again later in Settings).
+3. **Open the app**.
+   
+   - Select some stops for **each of the four divisions**.
+   - Go to the **keyboard play page** (keyboard icon in the top‑right corner).
 
+---
 
+# Build from Source
 
-&#x20;  • Android may also ask to scan the app for threats. By all means, do so, it should pass.
+Alternatively — or for development purposes — you can build the app from source.
 
+> **Important**  
+> This project uses **git submodules**. You must clone with `--recursive` or initialize submodules after cloning, or the build will be missing dependencies.
 
+## 1. Clone the repository and submodules
 
-3\) Open the app. To test it, you select some stops for each of the 4 divisions, and go to the keyboard play page (icon in the top-right corner) 
+```bash
+git clone --recursive https://github.com/tbgitoo/AeolusAndroid
+```
 
-&#x20;  
+If you already cloned **without** submodules:
 
+```bash
+cd AeolusAndroid
+git submodule update --init --recursive
+```
 
+Submodules include (among others):
 
-BUILD FROM SOURCE
+- **oboe** — audio I/O (Apache‑2.0; unmodified submodule)
+- **aeolus** — synthesizer core (GPL v3.0; minimal Android portability changes)
+- **clthreads** (GPL v2.1) and **libbthread** (GPL v2.1) with small Android tweaks
 
-=================
+## 2. Open in Android Studio (recommended)
 
+- Use a **current Android Studio** installation with the **NDK installed**.
+- Open the **project root** and let Gradle sync.
+- Run → select your device → the **debug build** should install and run.
 
+> **Note**  
+> The NDK is currently pinned to **30.0.14904198**. You can change this in the `build.gradle` of the **app** module if needed.
 
-Alternatively, or for development purposes, you can also build this app from source.
+---
 
+# Audio, MIDI, and App Behavior
 
+- **MIDI**  
+  The app uses Android’s standard MIDI APIs for both software and hardware sources.  
+  Hardware MIDI keyboards should work via **USB‑MIDI**. Virtual keyboard apps can act as software sources.
 
-Important: this project uses git submodules. Clone with --recursive or initialize
+- **Audio**  
+  Audio output is handled via **Google’s Oboe** library for low‑latency audio on Android (included as an unmodified submodule).
 
-submodules after cloning; otherwise your build will miss dependencies.
+- **First‑run defaults**  
+  If audio is silent on first run:
+  - Make sure you select stops in **all four divisions**.
+  - Check device output selection and volume.
 
+  Improved first‑run defaults and a simpler start screen are planned for **v1.1**.
 
+---
 
-1\) Clone the repository and submodules
+# Credits and Upstream References
 
-\--------------------------------------
+- **Aeolus synthesizer** (original project; GPL v3.0)  
+  https://github.com/SimulPiscator/aeolus  
+  This Android port preserves Aeolus’s rank‑wave synthesis, core architecture, and multi‑threading model, with only the portability changes required for Android.
 
-&#x20;  git clone --recursive https://github.com/tbgitoo/AeolusAndroid
+- **General Android wavetable synthesizer** (GPL v3.0)  
+  https://github.com/JanWilczek/android-wavetable-synthesizer  
+  Included as submodule **SynthesizerBase**, modified and simplified for this project.
 
+- **clthreads** (GPL v2.1)  
+  https://github.com/dmeliza/clthreads (Android portability changes)
 
+- **libbthread** (GPL v2.1)  
+  https://github.com/tux-mind/libbthread (Android portability changes)
 
-&#x20;  If you already cloned without submodules:
+- **Oboe** (Apache‑2.0; unmodified submodule)  
+  https://github.com/google/oboe
 
-&#x20;  cd AeolusAndroid
+---
 
-&#x20;  git submodule update --init --recursive
+# Documentation
 
+For reuse or further development, **extensive technical documentation** is available here:
 
+👉 https://github.com/tbgitoo/AeolusAndroid/blob/master/doc/Aeolus%20Android%20App%20Documentation.docx
 
-&#x20;  Submodules include (among others):
+This documentation dives deeply into:
 
-&#x20;  • oboe (audio I/O; Apache‑2.0; unmodified submodule)
+- the internal architecture of the Android app
+- the integration with Aeolus
+- the original Aeolus codebase
 
-&#x20;  • aeolus (synth; GPL v3.0; minimal portability changes for Android)
+> **Disclaimer**  
+> This documentation is provided "as is". No guarantee is made regarding accuracy or fitness for any particular purpose.
 
-&#x20;  • clthreads (GPL v2.1) and libbthread (GPL v2.1) with small Android tweaks
+---
 
+# Licenses
 
+- This repository: **GPL v3.0**
+- Aeolus upstream: **GPL v3.0**
+- Wavetable Synthesizer upstream: **GPL v3.0**
+- clthreads / libbthread: **GPL v2.1**
+- Oboe: **Apache‑2.0** (unmodified submodule)
 
-2\) Open in Android Studio (recommended)
+See the respective `LICENSE` files in the submodules where applicable.
 
-\--------------------------------------
+---
 
-&#x20;  • Use a current Android Studio with the NDK installed.
+# Support / Issues
 
-&#x20;  • Open the project root and let Gradle sync.
+We have **limited resources** to dedicate to this project — this is our contribution back to the community to make a hobby‑level Android Aeolus‑based synthesizer possible.
 
-&#x20;  • Run → choose your device → the debug build should install and run.
+If you do open a GitHub issue, please include:
 
-&#x20;  • Note that right now, the ndk is pinned to 30.0.14904198. You cange this in build.gradle of the app module.
+- device model and Android version
+- whether you used the APK or built from source
+- exact steps to reproduce
+- logs if available (for example `adb logcat` around the issue)
 
+We will try to respond, although we cannot guarantee either a response or successful debugging.
 
-
-
-
-AUDIO, MIDI, AND APP BEHAVIOR
-
-=============================
-
-• MIDI: The app relies on Android’s standard MIDI APIs for software and hardware
-
-&#x20; sources. Hardware MIDI keyboards should work via USB‑MIDI; on‑screen/virtual
-
-&#x20; keyboards can act as software sources.
-
-• Audio: The app uses Google’s Oboe library for low‑latency audio on Android
-
-&#x20; (kept as an unmodified submodule).
-
-• First‑run defaults: If audio is silent on first run, make sure you select stops, to start with in all four divisions. Also check device output
-
-&#x20; selection/volume. First‑run audio defaults and a simpler start screen are
-
-&#x20; planned for v1.1.
-
-
-
-
-
-CREDITS AND UPSTREAM REFERENCES
-
-===============================
-
-
-
-• Aeolus synthesizer (original project; GPL v3.0)
-
-&#x20; https://github.com/SimulPiscator/aeolus
-
-&#x20; This Android port preserves Aeolus’s rank‑wave synthesis, core architecture,
-
-&#x20; and multi‑threading model with only portability changes needed for Android.
-
-
-
-• General Android wavetable synthesizer (original project; GPL v3.0)
-
-&#x20; https://github.com/JanWilczek/android-wavetable-synthesizer
-
-&#x20; As submodule "SynthesizerBase", modified and simplified for the current project.
-
-
-
-• clthreads (GPL v2.1)
-
-&#x20; https://github.com/dmeliza/clthreads (portability changes for Android)
-
-
-
-• libbthread (GPL v2.1)
-
-&#x20; https://github.com/tux-mind/libbthread (portability changes for Android)
-
-
-
-• Oboe (Apache‑2.0; unmodified submodule)
-
-&#x20; https://github.com/google/oboe
-
-
-
-DOCUMENTATION
-
-=============
-
-
-
-For the purpose of reusing parts of this app or developing it further, extensive technical documentation is 
-
-available here: https://github.com/tbgitoo/AeolusAndroid/blob/master/doc/Aeolus%20Android%20App%20Documentation.docx
-
-
-
-
-
-LICENSES
-
-========
-
-• This repository: GPL v3.0
-
-• Aeolus upstream: GPL v3.0
-
-• Wavetable Synthesizer upstream: GPL v3.0
-
-• clthreads / libbthread: GPL v2.1
-
-• Oboe: Apache‑2.0 (submodule, unmodified)
-
-
-
-See the respective LICENSE files in the submodules where applicable.
-
-
-
-
-
-SUPPORT / ISSUES
-
-================
-
-
-
-We have limited ressources to dedicate to this project, this is really our return to the community for making an hobby-level Android Aeolus-based synthesizer port possible.
-
-
-
-But if you do open a GitHub issue and include:
-
-• device model and Android version,
-
-• whether you used the APK or built from source,
-
-• exact steps to reproduce, and
-
-• logs if available (e.g., `adb logcat` around the problem).
-
-
-
-we will try to respond, although we can't guarantee neither a response nor success of debugging.
-
-
-
-Contributions and bug reports are also welcome. Thank you for trying
-
-"Aeolus Android – Unofficial Port".
-
-
-
+Contributions and bug reports are welcome. Thank you for trying **Aeolus Android – Unofficial Port**.
