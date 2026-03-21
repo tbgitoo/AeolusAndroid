@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Midi_synth</string>
+    <string name="app_name">Aeolus</string>
     <string name="midi_input_title">Midi Input</string>
     <string name="no_messages_received">No messages received yet</string>
     <string name="input_message">Input message:</string>
