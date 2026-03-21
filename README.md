@@ -117,21 +117,25 @@ Submodules include (among others):
 
 ---
 
-# Documentation
+## Documentation
 
-For reuse or further development, **extensive technical documentation** is available here:
+For those interested in **how this app works internally**, or in reusing parts of it, we have made available **very extensive technical documentation**:
 
 👉 https://github.com/tbgitoo/AeolusAndroid/blob/master/doc/Aeolus%20Android%20App%20Documentation.docx
 
-This documentation dives deeply into:
+This document grew out of necessity and curiosity during development. Porting Aeolus to Android required a deep dive into parts of the original codebase that have remained largely undocumented for almost two decades. Along the way, we developed a deep and detailed understanding of Aeolus’s internal design, threading model, signal flow, and organ‑synthesis mechanics, and we decided to write that journey down.
 
-- the internal architecture of the Android app
-- the integration with Aeolus
-- the original Aeolus codebase
+The result is closer to a **technical monograph** than to a typical app manual. It covers, in depth:
+
+- the internal architecture of the Android app,
+- the integration layer between Android and Aeolus,
+- and the structure and inner workings of the original Aeolus codebase.
+
+> **Note for most users**  
+> This documentation is **not required** to use the app—**most users can safely ignore this section** and just install the APK from Releases.
 
 > **Disclaimer**  
-> This documentation is provided "as is". No guarantee is made regarding accuracy or fitness for any particular purpose.
-
+> This documentation is provided “as is”, without any guarantee of accuracy or fitness for any particular purpose. It reflects our understanding at the time of writing and is shared in the hope that it may be useful to others exploring this codebase.
 ---
 
 # Licenses
@@ -160,3 +164,18 @@ If you do open a GitHub issue, please include:
 We will try to respond, although we cannot guarantee either a response or successful debugging.
 
 Contributions and bug reports are welcome. Thank you for trying **Aeolus Android – Unofficial Port**.
+
+
+## Who this app is (and isn’t) for
+
+**This app is for you if:**
+- You have (or plan to use) **external MIDI hardware** such as a pedalboard and/or keyboards.
+- You want **low‑latency, local, offline** audio suitable for real‑time playing.
+- You’re comfortable with **open‑source** software and installing from a GitHub release.
+
+**This app is probably *not* for you if:**
+- You’re looking for a **casual, touch‑only** “organ sound” app from a store listing.
+- You expect a **turn‑key consumer experience** with presets, tutorials, and in‑app help.
+- You don’t plan to use **external MIDI** devices, or play **anything other than organ** sound.
+- You prefer strictly **sample‑based** virtual organs over the **synthesized** approach imposed by the Aeolus source code.
+
