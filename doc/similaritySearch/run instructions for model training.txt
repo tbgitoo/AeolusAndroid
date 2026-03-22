@@ -4,12 +4,30 @@
 python -m venv .venv
 # Windows
 .venv\Scripts\activate
-# macOS/Linux
-source .venv/bin/activate
+
 
 # 2) Install dependencies
 python -m pip install --upgrade pip
 python -m pip install music21
 
 # 3) Run the converter (no dataset download needed)
-python build_jsb_motifs_music21.py --out motifs.tx
+python build_jsb_motifs_music21.py --out motifs.txt
+
+
+# 4) Install environment for training
+
+pip install torch==2.2.2 numpy==1.26.4 onnx onnxruntime==1.18.0
+
+
+5) Train
+python trainEmbedding.py
+
+6) Sanity check
+
+python
+
+import onnxruntime as ort, numpy as np
+sess = ort.InferenceSession("aeolus_embedder.onnx", providers=['CPUExecutionProvider'])
+y = sess.run(None, {"input": np.zeros((1,256), np.float32)})[0]
+print(y.shape, np.linalg.norm(y, axis=-1))  # (1, 128), ~1.0
+
