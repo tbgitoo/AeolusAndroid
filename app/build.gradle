@@ -78,6 +78,8 @@ dependencies {
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
 
+    implementation libs.onnxruntime.mobile
+
     implementation project(path: ':aeolusNative')
     implementation project(path: ':inputMidi')
     implementation project(path: ':midiBase')

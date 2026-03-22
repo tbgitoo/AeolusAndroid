@@ -13,16 +13,12 @@ import androidx.appcompat.app.ActionBar;
 import com.mathis.aeolusnative.AeolusSynth.AeolussynthManager;
 import com.mathis.midiSynth.baseMidiActivity.baseAeolusMidiActivity;
 import com.mathis.midiSynth.databinding.ActivityPianoBinding;
-import com.mathis.midiSynth.musipedia.MidiEvent;
-import com.mathis.midiSynth.musipedia.MusipediaTriplet;
+import com.mathis.midiSynth.similaritySearch.MidiEvent;
+import com.mathis.midiSynth.similaritySearch.SymbolicEncoder;
 import com.mathis.midiSynth.userInterface.PianoView;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * An activity that displays two on-screen piano keyboards.
@@ -173,18 +169,34 @@ public class PianoActivity extends baseAeolusMidiActivity {
             } else {
                 // Stop recording and process the data
 
-                if (!recordedEvents.isEmpty()) {
-                    binding.searchMusipediaButton.setVisibility(View.VISIBLE);
 
+                if (!recordedEvents.isEmpty()) {
+                    String symbolic = SymbolicEncoder.encode(recordedEvents);
+
+                    binding.contourTextView.setText(symbolic);
+                    binding.searchMusipediaButton.setText("Copy symbolic");
+                    binding.searchMusipediaButton.setVisibility(View.VISIBLE);
+                    binding.searchMusipediaButton.setTag(symbolic);
+                } else {
+                    binding.contourTextView.setText("(no events)");
+                    binding.searchMusipediaButton.setVisibility(View.GONE);
                 }
+
             }
         });
+
 
         binding.searchMusipediaButton.setOnClickListener(v -> {
-            if ( !recordedEvents.isEmpty()) {
-                // to do: search for the lastRecorded Contour
-            }
+            String text = (v.getTag() instanceof String)
+                    ? (String) v.getTag()
+                    : binding.contourTextView.getText().toString();
+
+            android.content.ClipboardManager cm =
+                    (android.content.ClipboardManager) getSystemService(android.content.Context.CLIPBOARD_SERVICE);
+            cm.setPrimaryClip(android.content.ClipData.newPlainText("Symbolic MIDI", text));
+            android.widget.Toast.makeText(this, "Symbolic string copied.", android.widget.Toast.LENGTH_SHORT).show();
         });
+
     }
 
 

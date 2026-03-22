@@ -1,4 +1,4 @@
-package com.mathis.midiSynth.musipedia;
+package com.mathis.midiSynth.similaritySearch;
 
 /**
  * A simple data class to hold the details of a single MIDI event,
