@@ -5,8 +5,8 @@ This project trains a contrastive embedding model on symbolic musical motifs.
 
 `motifs.txt` is a **generated file** and is intentionally **not included** in the repository.
 
-It can be reproduced by running the provided data-preparation script (see run instructions for model training)
-a which uses
+It can be reproduced by running the provided data-preparation script (see "run instructions for model training.txt").
+This script uses the 
 the music21 toolkit to extract abstract symbolic motifs (intervals, chord classes,
 rhythm categories) from musical scores.
 
@@ -16,9 +16,6 @@ this repository.
 
 music21 is BSD-licensed:
 https://github.com/cuthbertLab/music21
-
-
-
 
 
 ## Pretrained embedding model (aeolus_embedder.onnx)
